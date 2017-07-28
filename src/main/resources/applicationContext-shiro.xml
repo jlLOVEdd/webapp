@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd" default-autowire="byName">
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd" >
 
     <description>apache shiro配置</description>
     
@@ -31,17 +31,14 @@
 				<!-- <entry key="user" value-ref="UserFilter" /> -->
 			</map>
 		</property> 
-        <property name="filterChainDefinitions">
+         <property name="filterChainDefinitions">
             <value>
                /login = anon 
-				/dologin = anon 
-				/logout = logout 
-				/favicon.ico = anon
-				/baseinfo/organInfo/opmonitoring/** = anon
-				/chart/** = anon
+               /webapp/WEB-INF/rest/common/** = anon
 				/** = user
+			
             </value>
-        </property>
+        </property> 
     </bean>
 	
 	<!--  用户授权信息Cache, 采用EhCache -->
