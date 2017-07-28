@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ include file="/WEB-INF/rest/comm/taglibs.jsp"%>
+  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +11,7 @@
 <body>
 <h1>this login page</h1>
 <script>
+	
 </script>
  	<form class="form-signin" role="form" id="loginForm" method="post"
 			autocomplete="off">
@@ -19,16 +20,17 @@
 					登录名
 				</label>
 				<input type="text" id="username" name="username"
-					class="input-block-level required form-control" >
+					 >
 				<label class="control-label" for="password">
 					密码
 				</label>
 				<input type="password" id="password" name="password"
-					class="input-block-level required form-control">
-				<button class="btn btn-lg btn-info btn-block" type="submit">
+					>
+				<button  type="submit">
 					登陆
 				</button>
 			</div>
+			<a href="#"  id = "register" name ="">注册</a>
 			
 		</form>
 </body>
