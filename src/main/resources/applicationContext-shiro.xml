@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd" >
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd" default-autowire="default">
 
     <description>apache shiro配置</description>
     
@@ -33,9 +33,9 @@
 		</property> 
          <property name="filterChainDefinitions">
             <value>
-               /login = anon 
-               /webapp/WEB-INF/rest/common/** = anon
-				/** = user
+            	/login = anon
+              /WebApp/common/js/** = anon
+			/** = user
 			
             </value>
         </property> 
