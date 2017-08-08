@@ -8,11 +8,8 @@
 <title>Insert title here</title>
 <script  src="<%= request.getContextPath()%>/common/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-	var  ele1 =document.getElementById("register");
-	alert(ele1)
     var ele = $("#register");
-  
-    alert(ele)
+ 
 </script>
 </head>
 <body>
