@@ -7,13 +7,12 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.SocketChannel;
 import java.util.RandomAccess;
 
-import com.hazelcast.spi.MigrationAwareService;
+
 
 
 public class NioChanel {
 
 	public NioChanel() {
-		// TODO Auto-generated constructor stub
 	}
 	public static void main(String[] args) {
 		try {
@@ -33,7 +32,6 @@ public class NioChanel {
 				
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

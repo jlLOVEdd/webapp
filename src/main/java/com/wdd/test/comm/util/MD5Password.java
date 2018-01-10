@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
 
-import org.junit.Test;
+import org.junit.gen5.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,8 +19,7 @@ public class MD5Password  {
 
 	public MD5Password() {
 		super();
-		// TODO Auto-generated constructor stub
-	}	
+	}
 	 private final static String HEX_NUMS_STR = "0123456789ABCDEF"; 
 	 private final static Integer SALT_LENGTH = 12;
 	@Test
@@ -71,7 +70,6 @@ public class MD5Password  {
 				System.arraycopy(digest, 0, pwd, SALT_LENGTH, digest.length);  
 				
 			} catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch(UnsupportedEncodingException e){
 				e.printStackTrace();
