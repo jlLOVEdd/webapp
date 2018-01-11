@@ -50,6 +50,9 @@
 	<bean id="securityRealm" class="com.wdd.test.service.shiro.securityRealm" autowire="default" >
 			<property name="credentialsMatcher" ref="customCredentialsMatcher" />
 	</bean>
+
+    <bean id="customCredentialsMatcher" class="com.wdd.test.service.shiro.CustomCredentialsMatcher" autowire="default" >
+    </bean>
     <!-- Shiro生命周期处理器 -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
      <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">

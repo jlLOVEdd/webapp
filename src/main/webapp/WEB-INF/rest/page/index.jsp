@@ -1,5 +1,4 @@
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -11,6 +10,7 @@
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
+
 
 <blockquote class="layui-elem-quote">
     大部分演示都在layer独立组件的官网，与内置的layer模块，用法是完全一致的

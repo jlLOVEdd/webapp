@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 import com.wdd.test.comm.util.MD5Password;
 
-@Component
+
 public class CustomCredentialsMatcher  extends SimpleCredentialsMatcher 
 {
 	@Resource

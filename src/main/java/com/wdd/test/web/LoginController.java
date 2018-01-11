@@ -40,7 +40,7 @@ public class LoginController extends BaseController{
 	@RequestMapping(value = "/login",method=RequestMethod.GET)
 	public String login(){
 		System.out.println("turn down loginWin.jsp");
-			return "login";
+			return "index";
 		}
 	@ResponseBody
 	@RequestMapping(value="/login",method=RequestMethod.POST)
