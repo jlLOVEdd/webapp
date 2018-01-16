@@ -3,6 +3,6 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wdd.test.dao.LoginControllerDao">
 	<select id="getPassWordByName" parameterType="String" resultType="User">
-		select * from  test.user WHERE username=#{username}
+		select * from  test.f_sysuserinfo WHERE username=#{username}
 	</select>
 </mapper>

@@ -31,6 +31,7 @@ import com.wdd.test.comm.DataCacheManager;
 import com.wdd.test.service.LoginControllerService;
 
 @Controller
+
 public class LoginController extends BaseController{
 	@Autowired 
 	CacheManager cacheManager;
@@ -39,41 +40,37 @@ public class LoginController extends BaseController{
 
 	@RequestMapping(value = "/login",method=RequestMethod.GET)
 	public String login(){
-		System.out.println("turn down loginWin.jsp");
-			return "index";
+			return "login";
 		}
 	@ResponseBody
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public ModelAndView dologin(@RequestParam("username") String username,@RequestParam("password")String password
-			,HttpServletRequest request,Model model) throws Exception{
-		//System.out.println(" turn down index.jsp");
-		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+	public ModelAndView dologin(@RequestParam("username") String username, @RequestParam("password") String password
+			, HttpServletRequest request, Model model) throws Exception {
+		System.out.println("/login");
+		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 		token.isRememberMe();
-		Subject subject =SecurityUtils.getSubject();
-		ModelAndView mav = new ModelAndView("index");
-		try{
-		subject.login(token);
-		}catch(UnknownAccountException e){
+		Subject subject = SecurityUtils.getSubject();
+		ModelAndView mav = new ModelAndView("TestPage");
+		try {
+			subject.login(token);
+		} catch (UnknownAccountException e) {
 			model.addAttribute("error", "用户名不存在");
-			mav.setViewName("loginWin");
+			mav.setViewName("login");
 			e.printStackTrace();
 			//throw new Exception("用户名不存在");
 			return mav;
-			
-		}catch(IncorrectCredentialsException e){
+
+		} catch (IncorrectCredentialsException e) {
 			model.addAttribute("error", "密码错误");
-			mav.setViewName("loginWin");
+			mav.setViewName("login");
 			e.printStackTrace();
 			//throw new Exception("用户名不存在");
-		}catch(AuthenticationException e){
+		} catch (AuthenticationException e) {
 			model.addAttribute("error", "输入密码次数过多，用户");
-			mav.setViewName("loginWin");
+			mav.setViewName("login");
 			e.printStackTrace();
 			//throw new Exception("用户名不存在");
 		}
 		return mav;
-		
-			
-		
 	}
 }

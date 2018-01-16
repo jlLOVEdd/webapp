@@ -1,82 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-  
+<%--
+  Created by IntelliJ IDEA.
+  User: js170830xlr
+  Date: 2018/1/16
+  Time: 14:23
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script  src="<%= request.getContextPath()%>/common/js/jquery-3.1.1.min.js"></script>
-<script  src="<%= request.getContextPath()%>/common/js/md5.js"></script>
-<script  src="<%= request.getContextPath()%>/common/js/token.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	var loginUrl ="/login";
-
-	$('#register').click(function(){
-        alert(hex_md5($('#password').val()))
-    });
-	
-	
-	function mysubmit()
-	{
-		debugger;
-		
-		$("#password").val(hex_md5($('#password').val()));
-		var username = $("#username").val();
-		
-		var d = $('#loginForm').serialize();
-
-		var reqUrl = getLoginSuffixUrl(loginUrl, true);
-		alert(JSON.stringify(d))
-		$.ajax({
-            type: "post",
-            url: reqUrl,
-            data: d,
-            dataType:"json",
-            async: true,
-            success: function(data) {
-            	
-            	if(data.success){
-            		alert("成功")
-            	}else{
-                 alert(data.error);
-            	}
-            	
-            },
-            error: function(data) {
-            }
-        });
-		
-		/* $("#myform").submit(); */
-	}
-	$("#submit").click(function(){
-		mysubmit();
-	})
-});
-</script>
+    <title>loginPage</title>
+    <link rel="stylesheet" href="/common/css/layui.css"  media="all">
 </head>
-<body>
-<h1>this login page</h1>
- 	<form  role="form" id="loginForm" method="post"
-			autocomplete="off">
-			<div class="form-signin-login">
-				<label  for="username">
-					登录名
-				</label>
-				<input type="text" id="username" name="username"
-					 >
-				<label  for="password">
-					密码
-				</label>
-				<input type="password" id="password" name="password"
-					>
-				<button id ="submit" >
-					登陆
-				</button>
-			</div>
-			<a href="javascript:void(0);"  id ="register" name ="123">注册</a>
-			
-		</form>
+<body class="layui-bg-cyan">
+    <div class="layui-container" style="margin-top:240px">
+        <div class="layui-fluid">
+            <div class="layui-row">
+                <div class="layui-col-md4 layui-col-md-offset4">
+                    <form class="layui-form " action="/login" method="post">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">用户：</label>
+                            <div class="layui-input-block">
+                                <input class="layui-input"  type="text" name="username" lay-verify="required" autocomplete="off" placeholder="请输入用户名" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" >密码：</label>
+                            <div class="layui-input-block">
+                                <input class="layui-input"  type="password" name="password" lay-verify="required" autocomplete="off" placeholder="请输入密码" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block" style="margin-left: 110px">
+                            <button class="layui-btn" >登陆</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

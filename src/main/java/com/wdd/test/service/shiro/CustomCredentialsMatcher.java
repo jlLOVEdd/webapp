@@ -27,28 +27,10 @@ public class CustomCredentialsMatcher  extends SimpleCredentialsMatcher
 	public boolean doCredentialsMatch(AuthenticationToken authcToken, AuthenticationInfo info)
 	{
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-		Cache passwordRetryCache = cacheManager.getCache("passwordRetryCache");
 		boolean fal = false;
 		try {
-			
-			 String username = (String) token.getPrincipal();
-			 AtomicInteger retryCount = (AtomicInteger) passwordRetryCache.get(username);
-		        if (retryCount == null) {
-		            retryCount = new AtomicInteger(0);
-		            passwordRetryCache.put(username, retryCount);
-		        }
-		        // 自定义一个验证过程：当用户连续输入密码错误5次以上禁止用户登录一段时间
-		        if (retryCount.incrementAndGet() > 2) {
-		            throw new ExcessiveAttemptsException();
-		        }
 		        fal = MD5Password.validPasswd(String.valueOf(token.getPassword()), getCredentials(info).toString());
-		        if (fal) {
-		            passwordRetryCache.remove(username);
-		        }else{
-		        	passwordRetryCache.put(username, retryCount);
-		        }
 		        return fal;
-		    
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -40,7 +40,7 @@ public class securityRealm extends AuthorizingRealm{
 			return null;
 			//throw new UnknownAccountException("用户不存在");
 		}
-		String passWord = userService.getUserByname(userName).getPw();
+		String passWord = userService.getUserByname(userName).getPassword();
 		//user.setUsername("weidongdong");
 		//user.setPw(passWord);
 		return new SimpleAuthenticationInfo(userName, passWord, getName());
