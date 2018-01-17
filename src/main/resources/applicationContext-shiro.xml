@@ -33,9 +33,10 @@
 		</property> 
          <property name="filterChainDefinitions">
             <value>
-           	/login =user
+            <!--/WEB-INF/rest/** =user-->
 			/** = anon
-			
+			<!--/WEB-INF/error = anon-->
+            <!--/common/* =anon-->
             </value>
         </property> 
     </bean>

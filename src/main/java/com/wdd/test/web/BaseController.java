@@ -1,14 +1,21 @@
 package com.wdd.test.web;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.server.ServletServerHttpRequest;
+import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.util.NumberUtils;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -20,6 +27,41 @@ import com.wdd.test.bean.PageParameter;
 public class BaseController
 {
 
+
+	/**
+	 *
+	 */
+	@ExceptionHandler(Exception.class)
+	public void exceptionHandler(Exception ex , HttpServletRequest request, HttpServletResponse response) throws IOException{
+		// Ajax请求
+		if (StringUtils.isNotBlank(request.getHeader("X-Requested-With")) && request.getHeader("X-Requested-With").equalsIgnoreCase("XMLHttpRequest")) {
+			if (ex instanceof org.springframework.web.multipart.MaxUploadSizeExceededException) {
+				long maxUpLoadSize = ((org.springframework.web.multipart.MaxUploadSizeExceededException) ex).getMaxUploadSize();
+				response.setHeader("sessionstatus", "上传文件超过" + (maxUpLoadSize == 0 ? 10 : (maxUpLoadSize / 1024 / 1024)) + "M最大限制!");
+				response.sendError(518, ex.getMessage());
+				response.setHeader("responseText", "responseText");
+			} else if(ex instanceof DataAccessException){
+				response.setHeader("sessionstatus", "exception");
+				response.sendError(518, "数据异常，请联系管理员");
+			}else {
+				response.setHeader("sessionstatus", "exception");
+				response.sendError(518, "操作异常，请联系管理员");
+			}
+			// Http请求
+		} else {
+			if (ex.getClass().getSimpleName().equals("ClientAbortException")) {
+				if(response.getOutputStream() != null){
+					response.getOutputStream().close();
+				}
+			} else {
+				response.setHeader("Cache-Control", "no-cache");
+				response.setHeader("Pragma", "no-cache");
+				response.setDateHeader("Expires", 0);
+				response.sendRedirect(request.getContextPath() + "/static/error/error.jsp");
+				System.out.println(request.getContextPath() + "/static/error/error.jsp");
+			}
+		}
+	}
 	/**
 	 * 默认ajax消息信息
 	 */

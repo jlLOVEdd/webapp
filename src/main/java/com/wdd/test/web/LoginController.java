@@ -50,26 +50,26 @@ public class LoginController extends BaseController{
 		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 		token.isRememberMe();
 		Subject subject = SecurityUtils.getSubject();
-		ModelAndView mav = new ModelAndView("TestPage");
+		ModelAndView mav = new ModelAndView("index");
 		try {
 			subject.login(token);
 		} catch (UnknownAccountException e) {
 			model.addAttribute("error", "用户名不存在");
 			mav.setViewName("login");
 			e.printStackTrace();
-			//throw new Exception("用户名不存在");
-			return mav;
+			throw new Exception("用户名不存在");
+
 
 		} catch (IncorrectCredentialsException e) {
 			model.addAttribute("error", "密码错误");
 			mav.setViewName("login");
 			e.printStackTrace();
-			//throw new Exception("用户名不存在");
+			throw new Exception("用户名不存在");
 		} catch (AuthenticationException e) {
 			model.addAttribute("error", "输入密码次数过多，用户");
 			mav.setViewName("login");
 			e.printStackTrace();
-			//throw new Exception("用户名不存在");
+			throw new Exception("用户名不存在");
 		}
 		return mav;
 	}

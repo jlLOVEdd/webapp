@@ -9,14 +9,14 @@
 <html>
 <head>
     <title>loginPage</title>
-    <link rel="stylesheet" href="/common/css/layui.css"  media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/common/css/layui.css"  media="all">
 </head>
 <body class="layui-bg-cyan">
     <div class="layui-container" style="margin-top:240px">
         <div class="layui-fluid">
             <div class="layui-row">
                 <div class="layui-col-md4 layui-col-md-offset4">
-                    <form class="layui-form " action="/login" method="post">
+                    <form class="layui-form " action="/webapp/login" method="post">
                         <div class="layui-form-item">
                             <label class="layui-form-label">用户：</label>
                             <div class="layui-input-block">
@@ -31,7 +31,7 @@
                         </div>
                         <div class="layui-form-item">
                             <div class="layui-input-block" style="margin-left: 110px">
-                            <button class="layui-btn" >登陆</button>
+                            <button class="layui-btn" lay-submit lay-filter="go" >登陆</button>
                             </div>
                         </div>
                     </form>
@@ -39,5 +39,17 @@
             </div>
         </div>
     </div>
+    <script src="${pageContext.request.contextPath}/common/layui.js"></script>
+    <script>
+        layui.use(['form','layer'],function () {
+            var form  =layui.form
+                ,layer = layui.layer;
+            form.on('submit(go)',function (data) {
+                console(data);
+                return false;
+            });
+        });
+
+    </script>
 </body>
 </html>
