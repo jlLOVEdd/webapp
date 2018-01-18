@@ -34,18 +34,19 @@ public class BaseController
 	@ExceptionHandler(Exception.class)
 	public void exceptionHandler(Exception ex , HttpServletRequest request, HttpServletResponse response) throws IOException{
 		// Ajax请求
+		//String header = request.getHeader("X-Requested-With");
 		if (StringUtils.isNotBlank(request.getHeader("X-Requested-With")) && request.getHeader("X-Requested-With").equalsIgnoreCase("XMLHttpRequest")) {
 			if (ex instanceof org.springframework.web.multipart.MaxUploadSizeExceededException) {
 				long maxUpLoadSize = ((org.springframework.web.multipart.MaxUploadSizeExceededException) ex).getMaxUploadSize();
 				response.setHeader("sessionstatus", "上传文件超过" + (maxUpLoadSize == 0 ? 10 : (maxUpLoadSize / 1024 / 1024)) + "M最大限制!");
-				response.sendError(518, ex.getMessage());
+				response.sendError(200, ex.getMessage());
 				response.setHeader("responseText", "responseText");
 			} else if(ex instanceof DataAccessException){
 				response.setHeader("sessionstatus", "exception");
 				response.sendError(518, "数据异常，请联系管理员");
 			}else {
 				response.setHeader("sessionstatus", "exception");
-				response.sendError(518, "操作异常，请联系管理员");
+				response.sendError(200, ex.getMessage());
 			}
 			// Http请求
 		} else {
@@ -57,7 +58,7 @@ public class BaseController
 				response.setHeader("Cache-Control", "no-cache");
 				response.setHeader("Pragma", "no-cache");
 				response.setDateHeader("Expires", 0);
-				response.sendRedirect(request.getContextPath() + "/static/error/error.jsp");
+				//response.sendRedirect(request.getContextPath() + "/static/error/error.jsp");
 				System.out.println(request.getContextPath() + "/static/error/error.jsp");
 			}
 		}

@@ -1,11 +1,16 @@
 package com.wdd.test.web;
 
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
@@ -44,33 +49,40 @@ public class LoginController extends BaseController{
 		}
 	@ResponseBody
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public ModelAndView dologin(@RequestParam("username") String username, @RequestParam("password") String password
-			, HttpServletRequest request, Model model) throws Exception {
+	public void dologin(@RequestParam("username") String username, @RequestParam("password") String password
+			, HttpServletRequest request, Model model, HttpServletResponse response) throws Exception {
 		System.out.println("/login");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		JSONObject jsonObj = new JSONObject();
+		//System.out.println(request.getHeader("X-Requested-With"));
+		jsonObj.put("success",true);
 		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 		token.isRememberMe();
 		Subject subject = SecurityUtils.getSubject();
-		ModelAndView mav = new ModelAndView("index");
 		try {
 			subject.login(token);
 		} catch (UnknownAccountException e) {
-			model.addAttribute("error", "用户名不存在");
-			mav.setViewName("login");
-			e.printStackTrace();
-			throw new Exception("用户名不存在");
-
-
+			jsonObj.put("success",false);
+			jsonObj.put("msg","用户名错误");
 		} catch (IncorrectCredentialsException e) {
-			model.addAttribute("error", "密码错误");
-			mav.setViewName("login");
-			e.printStackTrace();
-			throw new Exception("用户名不存在");
+			jsonObj.put("success",false);
+			jsonObj.put("msg","密码错误");
 		} catch (AuthenticationException e) {
-			model.addAttribute("error", "输入密码次数过多，用户");
-			mav.setViewName("login");
-			e.printStackTrace();
-			throw new Exception("用户名不存在");
+			jsonObj.put("success",false);
+			jsonObj.put("msg","输入过多用户锁定");
+		}finally {
+			out.append(jsonObj.toString());
+			out.flush();
+			if(out!=null){
+				out.close();
+			}
 		}
-		return mav;
+	}
+
+	@RequestMapping(value = "/main")
+	public String main(){
+		return "main";
 	}
 }
