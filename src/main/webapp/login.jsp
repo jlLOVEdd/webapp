@@ -59,7 +59,7 @@
                     dataType:"json",
                     success:function(data){
                         if(data.success){
-                            window.location.href="main";
+                          //  window.location.href="main";
                         }else{
                             console.log(data.success);
                             console.log(data.msg);
@@ -70,7 +70,7 @@
                                 area: ['300px', '200px'],
                                 yes: function(index, layero) {
                                     if (data.msg == "密码错误") {
-                                        $("input[name='password']").focus();
+//                                        $("input[name='password']").focus();
                                     } else {
                                         $("input[name='username']").focus();
                                     }

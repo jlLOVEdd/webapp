@@ -32,10 +32,7 @@
     <!-- 对模型视图添加前后缀 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/rest/page/" p:suffix=".jsp"/>
-          
-          <!-- 定义无Controller的path<->view直接映射 -->
-	<mvc:view-controller path="/"
-		view-name="redirect:/login" />
+
 
 
 

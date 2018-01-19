@@ -1,5 +1,6 @@
 package com.wdd.test.web;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.List;
@@ -44,8 +45,9 @@ public class LoginController extends BaseController{
 	private LoginControllerService loginControllerService;
 
 	@RequestMapping(value = "/login",method=RequestMethod.GET)
-	public String login(){
-			return "login";
+	public void login( HttpServletRequest request, HttpServletResponse response) throws IOException {
+			 System.out.println("GET"+"/login");
+			 response.sendRedirect(request.getContextPath()+"/");
 		}
 	@ResponseBody
 	@RequestMapping(value="/login",method=RequestMethod.POST)
