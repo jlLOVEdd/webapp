@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html>
 <head>
     <title>loginPage</title>
@@ -16,7 +17,7 @@
         <div class="layui-fluid">
             <div class="layui-row">
                 <div class="layui-col-md4 layui-col-md-offset4">
-                    <form class="layui-form " action="/webapp/login" method="post">
+                    <form class="layui-form " action="/webapp/login" method="get">
                         <div class="layui-form-item">
                             <label class="layui-form-label">用户：</label>
                             <div class="layui-input-block">
@@ -59,7 +60,7 @@
                     dataType:"json",
                     success:function(data){
                         if(data.success){
-                          //  window.location.href="main";
+                            window.location.href="main";
                         }else{
                             console.log(data.success);
                             console.log(data.msg);

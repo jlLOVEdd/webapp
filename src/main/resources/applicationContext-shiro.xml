@@ -23,12 +23,12 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
   		  <property name="loginUrl" value="/login.jsp"/>
-        <property name="successUrl" value="/main"/>
+        <property name="successUrl" value="/main.jsp"/>
        <property name="unauthorizedUrl" value="/rest/page/401"/>
          <property name="filters">
 			<map>
-                <entry key="user" value-ref="userFilter" />
-                <entry key="authc" value-ref="formAuthenticationFilter" />
+                <!--<entry key="user" value-ref="userFilter" />-->
+               <entry key="authc" value-ref="formAuthenticationFilter" />
 
 			</map>
 		</property> 
