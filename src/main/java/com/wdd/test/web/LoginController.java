@@ -1,27 +1,19 @@
 package com.wdd.test.web;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.Map;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.subject.Subject;
-import org.slf4j.impl.Log4jLoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,21 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.wdd.test.bean.Role;
-import com.wdd.test.bean.User;
-import com.wdd.test.comm.DataCacheManager;
-import com.wdd.test.service.LoginControllerService;
 
 @Controller
 
 public class LoginController extends BaseController{
 	@Autowired 
 	CacheManager cacheManager;
-	@Autowired
-	private LoginControllerService loginControllerService;
-
+	
 	@RequestMapping(value = "/login",method=RequestMethod.GET)
 	public void login( HttpServletRequest request, HttpServletResponse response) throws IOException {
 			 System.out.println("GET"+"/login");

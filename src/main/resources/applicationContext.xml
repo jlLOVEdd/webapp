@@ -24,23 +24,23 @@
     <aop:aspectj-autoproxy/> 
     <bean id="buness" class="com.wdd.test.aop.Buness"></bean>
     <bean id="aspject" class="com.wdd.test.aop.Aspject"></bean>
-    <!-- 获取bean工具注入 -->
+
     <!-- MyBatis配置 -->
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-		<property name="typeAliasesPackage"
-			value="com.wdd.test.bean" />
+
 		<property name="configLocation"
 			value="classpath:/mybatis-spring.xml" />
 		<!-- 显式指定Mapper文件位置 -->
 		<property name="mapperLocations"
-			value="classpath*:/mybatis/**/*Mapper.xml" />
+			value="classpath*:/mybatis/mapper/*Mapper.xml" />
 		
 	</bean>
-	
-
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+          p:basePackage="com.wdd.test.dao"
+          p:sqlSessionFactoryBeanName="sqlSessionFactory"
+    ></bean>
 	<bean id="jdbcTemplate"
 		class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>

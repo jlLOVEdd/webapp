@@ -350,4 +350,9 @@
       pwd_last_datetime = #{pwdLastDatetime,jdbcType=TIMESTAMP}
     where userid = #{userid,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByName" resultMap="BaseResultMap" >
+    select * from  test.f_sysuserinfo WHERE username=#{name}
+
+  </select>
 </mapper>
