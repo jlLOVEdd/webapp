@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class LoginController extends BaseController{
 	@Autowired 
 	CacheManager cacheManager;
-	
+
 	@RequestMapping(value = "/login",method=RequestMethod.GET)
 	public void login( HttpServletRequest request, HttpServletResponse response) throws IOException {
 			 System.out.println("GET"+"/login");
@@ -49,6 +49,7 @@ public class LoginController extends BaseController{
 		Subject subject = SecurityUtils.getSubject();
 		try {
 			subject.login(token);
+			SecurityUtils.getSubject().getSession().setTimeout(60000);
 		} catch (UnknownAccountException e) {
 			jsonObj.put("success",false);
 			jsonObj.put("msg","用户名错误");
