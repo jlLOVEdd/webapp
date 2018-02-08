@@ -8,13 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%
-        String path = request.getContextPath();
-        String basePath = request.getScheme() + "://"
-                + request.getServerName() + ":" + request.getServerPort()
-                + path + "/";
-    %>
-    <base href="<%=basePath%>">
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>个人项目主页布局</title>
@@ -53,24 +48,10 @@
         </ul>
     </div>
 
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test" >
+    <div id="menuView">
 
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
-            </ul>
-        </div>
     </div>
+
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
@@ -85,27 +66,47 @@
 <script src="common/layui.js"></script>
 <script>
     //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
-        layui.tree({
-            elem: '#demo' //传入元素选择器
-            ,nodes: [{ //节点
-                name: '父节点1'
-                ,children: [{
-                    name: '子节点11'
-                },{
-                    name: '子节点12'
-                }]
-            },{
-                name: '父节点2（可以点左侧箭头，也可以双击标题）'
-                ,children: [{
-                    name: '子节点21'
-                    ,children: [{
-                        name: '子节点211'
-                    }]
-                }]
-            }]
-        });
+    layui.use(['element', 'laytpl'], function () {
+        var element = layui.element,
+            laytpl = layui.laytpl,
+            $ = layui.jquery;
+        var data =[];
+        $.ajax({
+            url: "resources/selectAllMenu",
+            data:[],
+            type:"POST",
+            dataType:"json",
+            success:function(data11){
+                data=data11;
+                var template = [
+                    '<div class="layui-side layui-bg-black">'
+                    , '<div class="layui-side-scroll">'
+                    , '{{# if(d.data && d.data.length > 0) { }}'
+                    , '{{# layui.each(d.data, function(index, topMenu) { }}'
+                    , '<ul class="layui-nav layui-nav-tree" lay-filter="menuFilter">'
+                    , '<li class="layui-nav-item layui-nav-itemed">'
+                    , '<a class="" href="javascript:;">{{ topMenu.name }}</a>'
+                    , '{{# if(topMenu.childrenList && topMenu.childrenList.length > 0) { }}'
+                    , '<dl class="layui-nav-child">'
+                    , '{{# layui.each(topMenu.childrenList, function(i, childMenu) { }}'
+                    , '<dd><a href="javascript:;">{{ childMenu.name }}</a></dd>'
+                    , '{{# }); }}'
+                    , '</dl>'
+                    , '{{# } }}'
+                    , '</li>'
+                    , '</ul>'
+                    , '{{# }); }}'
+                    , '{{# } }}'
+                    , '</div>'
+                    , '</div>'
+                ].join('');
+                var view = $('#menuView');
+                laytpl(template).render(data, function (html) {
+                    view.html(html);
+                });
+                element.init();
+            }
+    });
 
     });
 </script>

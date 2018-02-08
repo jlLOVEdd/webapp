@@ -49,7 +49,7 @@ public class LoginController extends BaseController{
 		Subject subject = SecurityUtils.getSubject();
 		try {
 			subject.login(token);
-			SecurityUtils.getSubject().getSession().setTimeout(60000);
+			//SecurityUtils.getSubject().getSession().setTimeout(60000);
 		} catch (UnknownAccountException e) {
 			jsonObj.put("success",false);
 			jsonObj.put("msg","用户名错误");
@@ -72,4 +72,5 @@ public class LoginController extends BaseController{
 	public String main(){
 		return "main";
 	}
+
 }

@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
-    <mvc:annotation-driven/>
+
     <mvc:resources mapping="/static/**" location="/static/"/>
     <mvc:resources mapping="/common/**" location="/common/"/>
     <mvc:resources mapping="/WEB-INF/error/**" location="/WEB-INF/error/"/>
@@ -23,7 +23,7 @@
                                 expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+    <mvc:annotation-driven/>
 
     <!-- 对模型视图添加前后缀 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
