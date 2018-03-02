@@ -30,4 +30,13 @@ public class UserServiceImpl extends BaseServiceImpl<Sysuserinfo, Integer> imple
     public Sysuserinfo selectByName(String name) {
         return sysuserinfoMapper.selectByName(name);
     }
+
+    /**
+     * 新增用户
+     * @param sysuserinfo
+     */
+    @Override
+    public void inserUser(Sysuserinfo sysuserinfo) {
+        sysuserinfoMapper.insert(sysuserinfo);
+    }
 }

@@ -6,4 +6,6 @@ public interface UserService {
 
     public Sysuserinfo selectByName(String name);
 
+    void inserUser(Sysuserinfo sysuserinfo);
+
 }

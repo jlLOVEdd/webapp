@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:cache="http://www.springframework.org/schema/cache"
-       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.2.xsd
     http://www.springframework.org/schema/beans
@@ -14,54 +16,55 @@
     http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
     http://www.springframework.org/schema/cache
     http://www.springframework.org/schema/cache/spring-cache.xsd">
-    
+
     <context:annotation-config></context:annotation-config>
     <!-- 自动扫描带注解的包，将带有注解的纳入spring的管理 -->
     <context:component-scan base-package="com.wdd.test">
-    	 <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    	 <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
-    <aop:aspectj-autoproxy/> 
+    <aop:aspectj-autoproxy/>
     <bean id="buness" class="com.wdd.test.aop.Buness"></bean>
     <bean id="aspject" class="com.wdd.test.aop.Aspject"></bean>
 
     <!-- MyBatis配置 -->
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
 
-		<property name="configLocation"
-			value="classpath:/mybatis-spring.xml" />
-		<!-- 显式指定Mapper文件位置 -->
-		<property name="mapperLocations"
-			value="classpath*:/mybatis/**/*Mapper.xml" />
-		
-	</bean>
+        <property name="configLocation"
+                  value="classpath:/mybatis-spring.xml"/>
+        <!-- 显式指定Mapper文件位置 -->
+        <property name="mapperLocations"
+                  value="classpath*:/mybatis/**/*Mapper.xml"/>
+
+    </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
           p:basePackage="com.wdd.test.dao"
           p:sqlSessionFactoryBeanName="sqlSessionFactory"
     ></bean>
-	<bean id="jdbcTemplate"
-		class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
-		
-		<bean id="validator"
-		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+    <bean id="jdbcTemplate"
+          class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
 
-<!-- 
-	<bean id="dataSource"
-		class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-		<constructor-arg ref="dataSourceSpied" />
-	</bean> -->
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
+    <!--
+        <bean id="dataSource"
+            class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+            <constructor-arg ref="dataSourceSpied" />
+        </bean> -->
 
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
-	 <!-- 引入配置文件 -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+    <!-- 引入配置文件 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
@@ -69,7 +72,7 @@
             </list>
         </property>
     </bean>
-    
+
     <!-- Single Redis Server -->
     <!-- 
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
@@ -91,8 +94,8 @@
         <property name="maxWaitMillis" value="${redis.pool.maxWaitMillis}"/>
         <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
     </bean> -->
-    
-	<!-- dataSource 配置 -->
+
+    <!-- dataSource 配置 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
         <property name="url" value="${jdbc.url}"/>
@@ -125,5 +128,5 @@
         <!-- 配置监控统计拦截的filters -->
         <property name="filters" value="stat"/>
     </bean>
-		<import resource="applicationContext-shiro.xml"/>
-    </beans>
+    <import resource="applicationContext-shiro.xml"/>
+</beans>

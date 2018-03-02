@@ -115,7 +115,7 @@
       cardID, mobile, nickname, 
       is_nickname, status, createtime, 
       updatetime, pwd_last_datetime)
-    values (#{userid,jdbcType=INTEGER}, #{agentid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{userid,jdbcType=INTEGER}, #{agentid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{usertype,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, 
       #{cardid,jdbcType=CHAR}, #{mobile,jdbcType=CHAR}, #{nickname,jdbcType=VARCHAR}, 
       #{isNickname,jdbcType=CHAR}, #{status,jdbcType=CHAR}, #{createtime,jdbcType=TIMESTAMP}, 
