@@ -38,7 +38,7 @@
         </plugins>
     </build>
     <properties>
-        <spring.version>4.3.10.RELEASE</spring.version>
+        <spring.version>5.0.1.RELEASE</spring.version>
         <hibernate-validator.version>
             5.1.0.Final
         </hibernate-validator.version>
@@ -110,19 +110,13 @@
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!-- vert.x -->
-        <!-- <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-core</artifactId>
-            <version>${vertx.version}</version>
-            <scope>provided</scope>
-        </dependency>
+        <!-- RabbitMQ -->
         <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-platform</artifactId>
-            <version>${vertx.version}</version>
-            <scope>provided</scope>
-        </dependency> -->
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>3.6.5</version>
+        </dependency>
+
         <!--spring-web  -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -342,7 +336,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
-            <version>1.0.2.RELEASE</version>
+            <version>2.0.3.RELEASE</version>
         </dependency>
         <!--mybatis 生成代码 -->
         <dependency>
