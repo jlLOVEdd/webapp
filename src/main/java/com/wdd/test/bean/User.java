@@ -6,7 +6,7 @@ public class User {
 	
 	private Long id;
 	private String username;
-	private String pw;
+	private String password;
 	private String state;
 	private Date createTime;
 	
@@ -21,7 +21,7 @@ public class User {
 		super();
 		this.id = id;
 		this.username = usernamel;
-		this.pw = password;
+		this.password = password;
 		this.state = state;
 		this.createTime = createTime;
 	}
@@ -44,13 +44,13 @@ public class User {
 	}
 
 
-	public String getPw() {
-		return pw;
+	public String getPassword() {
+		return password;
 	}
 
 
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setPassword(String pw) {
+		this.password = pw;
 	}
 
 

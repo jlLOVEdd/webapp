@@ -31,13 +31,10 @@ public class MD5Password  {
 		//System.out.println(bb);
 		String pw = getEncryptedPwd(str);
 		//System.out.println(pw);
-        boolean isge =validPasswd(str, "E00D9267C1AEC025FF3E69394179ECA513E406E2044DEDA8EBF39816");  
+        boolean isge =validPasswd(str, "E00D9267C1AEC025FF3E69394179ECA513E406E2044DEDA8EBF39816");
         System.out.println(isge);
 	}
-	//999B03866EEDFF6282329A34B004A0E7C0C453A9AC2E107A943E17AD
-	//E00D9267C1AEC025FF3E69394179ECA513E406E2044DEDA8EBF39816
-	//F98564EC7980B8E6F116773FFFBB7242295FDC0ABDBA79AF161CA72D
-	 public static String byteToHexString(byte[] salt){  
+	 public static String byteToHexString(byte[] salt){
 	        StringBuffer hexString = new StringBuffer();  
 	        for (int i = 0; i < salt.length; i++) {  
 	            String hex = Integer.toHexString(salt[i] & 0xFF);  
