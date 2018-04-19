@@ -8,6 +8,7 @@
     <name>WebApp Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <build>
+        <defaultGoal>compile</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
