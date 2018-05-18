@@ -57,8 +57,9 @@ public class Test {
 
     @org.junit.Test
     public void keyString() {
-        System.out.println(jedisUtils.getValue("ss"));
-        //jedisUtils.delete("ss");
+        //jedisUtils.setvlaue("ss","ssss");
+        System.out.println("---------"+jedisUtils.getValue("ss"));
+
     }
 
 }

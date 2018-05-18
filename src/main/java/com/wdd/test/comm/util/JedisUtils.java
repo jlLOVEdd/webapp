@@ -33,4 +33,8 @@ public class JedisUtils {
        return  redisTemplate.opsForValue().get(key);
     }
 
+    public  void setvlaue(String key,String value){
+        redisTemplate.opsForValue().set(key,value);
+    }
+
 }
