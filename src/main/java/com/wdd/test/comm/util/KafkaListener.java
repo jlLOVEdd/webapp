@@ -8,6 +8,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -36,6 +37,7 @@ public class KafkaListener implements ApplicationListener<ContextRefreshedEvent>
     }
 
 
+    @EnableRetry
     class listenerThread extends Thread {
         listenerThread() {
         }
@@ -81,6 +83,7 @@ public class KafkaListener implements ApplicationListener<ContextRefreshedEvent>
                         System.out.println(">>>>>>>>>>>title:"+obj.get("titile").getAsString());
                         System.out.println(">>>>>>>>>>>>>>>>list:"+obj.get("json").getAsJsonArray().get(1));
                         System.out.println(">>>>>>>>>>>>>>>>list:"+obj.get("jsonobject").getAsJsonObject().toString());
+                        SpringContextHolder.getBean(KafkaRetry.class).retrytest();
                     } catch (JsonSyntaxException e) {
                         e.printStackTrace();
                         System.out.println(">>>>>>>>>>>>>>>> 数据poll异常");
