@@ -1,7 +1,25 @@
 package com.wdd.test.comm.uptofather;
 
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+
 public class Father {
-    void eat(){
+    public static String name ="father";
+
+    public  Father(){
+        System.out.println("Father Constructor");
+    }
+
+    static {
+        System.out.println(" father static");
+    }
+
+    public static void Ftest(){
+        System.out.println("static method");
+    }
+    void single(){
+        System.out.println("father is single");
+    }
+    void eat( Father father){
         System.out.println("i am father");
     }
 }
