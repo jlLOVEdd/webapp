@@ -7,16 +7,18 @@ package test;
  */
 public class InnerClassTest {
 
-    public  static class  InnerStaticClass{
+    public static class InnerStaticClass {
         private String name = "static";
-        public void getName(){
+
+        public void getName() {
             System.out.println(this.name);
         }
     }
 
-    public  static class  InnerClass{
+    public static class InnerClass {
         private String name = "no-static";
-        public void getName(){
+
+        public void getName() {
             System.out.println(this.name);
         }
     }
