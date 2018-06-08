@@ -18,8 +18,10 @@ public class Father {
     }
     void single(){
         System.out.println("father is single");
+        System.out.println(this);
+        eat();
     }
-    void eat( Father father){
+    void eat(){
         System.out.println("i am father");
     }
 }

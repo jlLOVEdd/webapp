@@ -16,7 +16,7 @@ public class Son  extends  Father{
         System.out.println("static method");
     }
     @Override
-    void eat( Father father) {
+    void eat( ) {
        System.out.println(" i am son");
     }
     void  playGame(){
