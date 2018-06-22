@@ -3,9 +3,10 @@ package com.wdd.test.comm;
 
 import com.wdd.test.bean.Sysuserinfo;
 import com.wdd.test.service.UserService;
-import org.apache.log4j.Logger;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ import javax.annotation.Resource;
 public class DataCacheManager implements InitializingBean {
     @Autowired
     private CacheManager cacheManager;
-    private Logger logger = Logger.getLogger(DataCacheManager.class);
+    private Logger logger = LoggerFactory.getLogger(DataCacheManager.class);
     public static final String ROLE = "roleInfo";
 
     @Resource
@@ -37,7 +38,7 @@ public class DataCacheManager implements InitializingBean {
 
         Cache cache = cacheManager.getCache("passwordRetryCache");
         cache.put("1", "我是shab");
-        logger.info(cache.get("1"));
+        logger.info(cache.get("1").toString());
 
     }
 }
