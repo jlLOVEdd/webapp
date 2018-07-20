@@ -12,7 +12,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>个人项目主页布局</title>
+    <title>个人项目测试</title>
     <link rel="stylesheet" href="common/css/layui.css">
 </head>
 <body class="layui-layout-body">
