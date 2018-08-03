@@ -162,6 +162,7 @@
     <root level="info">
         <!-- 控制台输出 -->
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ERROR"/>
 
         <!-- 文件输出 -->
        <!--<appender-ref ref="InnerInfo"/>-->

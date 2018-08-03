@@ -29,8 +29,9 @@ public class Test {
     @Before
     public void setup() {
         //连接redis服务器，192.168.0.100:6379
-        jedis = new Jedis("127.0.0.1", 6379);
+        jedis = new Jedis("106.14.178.69", 6379);
         //权限认证
+        jedis.auth("caonima->CAOCAOCAO");
 
     }
 
@@ -40,18 +41,18 @@ public class Test {
     @org.junit.Test
     public void testString() {
         //-----添加数据----------
-        jedis.set("name1", "xinxin");//向key-->name中放入了value-->xinxin
+//        jedis.set("name1", "xinxin");//向key-->name中放入了value-->xinxin
         System.out.println(jedis.get("name1"));//执行结果：xinxin
 
-        jedis.append("name", " is my lover"); //拼接
+//        jedis.append("name", " is my lover"); //拼接
         System.out.println(jedis.get("name"));
 
-        jedis.del("name");  //删除某个键
-        System.out.println(jedis.get("name"));
-        //设置多个键值对
-        jedis.mset("name", "liuling", "age", "23", "qq", "476777XXXsssss");
-        jedis.incr("age"); //进行加1操作
-        System.out.println(jedis.get("name") + "-" + jedis.get("age") + "-" + jedis.get("qq"));
+//        jedis.del("name");  //删除某个键
+//        System.out.println(jedis.get("name"));
+//        //设置多个键值对
+//        jedis.mset("name", "liuling", "age", "23", "qq", "476777XXXsssss");
+//        jedis.incr("age"); //进行加1操作
+//        System.out.println(jedis.get("name") + "-" + jedis.get("age") + "-" + jedis.get("qq"));
 
     }
 
@@ -60,7 +61,6 @@ public class Test {
         //jedisUtils.setvlaue("ss","ssss");
         //jedisUtils.delete("ss");
         System.out.println("---------"+jedisUtils.getValue("ss"));
-
     }
 
 }
