@@ -46,6 +46,8 @@ public class ListTest {
         TreeSet<String> treeSet = new TreeSet<String>();
         treeSet.add("b");
         treeSet.add("c");
+        treeSet.add("11");
+        treeSet.add("2");
         treeSet.add("a");
         treeSet.add("e");
         treeSet.add("d");
@@ -62,6 +64,8 @@ public class ListTest {
         });
         treeMap.put("a","1");
         treeMap.put("1","1");
+        treeMap.put("11","1");
+        treeMap.put("2","1");
         treeMap.put("c","1");
         treeMap.put("e","1");
         treeMap.put("d","1");
