@@ -1,9 +1,0 @@
-﻿534039
-
-mysql：
-
-root   Mysql842655.
-
-admin Wdd842655.
-
-wddtest  Wdd123456.
