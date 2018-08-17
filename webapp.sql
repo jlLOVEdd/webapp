@@ -308,4 +308,11 @@ INSERT INTO `test`.`f_resources` (`name`, `url`, `type`, `pid`) VALUES ('用户�
 INSERT INTO `test`.`f_resources` (`name`, `url`, `type`, `pid`) VALUES ('角色管理', '/role', '1', '1');
 INSERT INTO `test`.`f_resources` (`name`, `url`, `type`, `pid`) VALUES ('资源管理', '/resource', '1', '1');
 INSERT INTO `test`.`f_resources` (`name`, `url`, `type`, `pid`) VALUES ('用户组管理', '/group', '1', '1');
-
+-- 用于测试脚本
+CREATE TABLE `t_goods` (
+`id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id' ,
+`sale_amount`  decimal(12,2) NULL COMMENT '销售金额' ,
+`price`  decimal(12,2) NULL COMMENT '单价' ,
+`receivable_amount`  decimal(12,2) NULL COMMENT '应收金额' ,
+PRIMARY KEY (`id`)
+);

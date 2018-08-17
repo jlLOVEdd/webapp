@@ -1,5 +1,7 @@
 package com.wdd.test.web;
 
-public class UserController {
+import org.springframework.stereotype.Controller;
 
+@Controller
+public class UserController {
 }

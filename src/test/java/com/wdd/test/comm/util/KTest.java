@@ -27,5 +27,7 @@ public class KTest {
         json.add("jsonobject", object);
         System.out.println(json.toString());
         kafkaProducerUtils.sendMsg(json.toString());
+
+
     }
 }

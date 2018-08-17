@@ -35,6 +35,11 @@ public class Test {
 
     }
 
+    @org.junit.Test
+    public void testUpdate() {
+
+    }
+
     /**
      * redis存储字符串
      */

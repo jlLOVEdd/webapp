@@ -40,6 +40,7 @@
 
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
+        <!--
         <table tableName="f_sysuserinfo" domainObjectName="Sysuserinfo">
             <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" type="post" identity="true"/>
         </table>
@@ -78,7 +79,12 @@
 
         <table tableName="f_user_role" domainObjectName="UserRole">
             <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" type="post" identity="true"/>
+        </table>-->
+        <table tableName="t_goods" domainObjectName="Goods">
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" type="post" identity="true"/>
         </table>
+
+
 
 
     </context>
