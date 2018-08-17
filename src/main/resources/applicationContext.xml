@@ -21,8 +21,6 @@
                                 expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
     <aop:aspectj-autoproxy/>
-    <bean id="buness" class="com.wdd.test.aop.Buness"></bean>
-    <bean id="aspject" class="com.wdd.test.aop.Aspject"></bean>
 
     <!-- MyBatis配置 -->
     <bean id="sqlSessionFactory"

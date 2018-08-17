@@ -21,7 +21,7 @@ public class HabseTest {
     public static void init() {
         configuration = HBaseConfiguration.create();
         configuration.set("hbase.zookeeper.property.clientPort", "2181");
-        configuration.set("hbase.zookeeper.quorum", "101.236.39.141,101.236.46.114,101.236.46.113");
+        configuration.set("hbase.zookeeper.quorum", "");
         configuration.set("hbase.master", "101.236.39.141:60000");
         File workaround = new File(".");
         System.getProperties().put("hadoop.home.dir",
