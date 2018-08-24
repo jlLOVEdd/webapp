@@ -8,8 +8,7 @@ package com.wdd.test.comm.util;
 public class KafkaClumerTest {
     public static void main(String[] args) {
         try {
-            ListenerThread listener = new ListenerThread();
-
+            ListenerThreadDemo listener = new ListenerThreadDemo();
             listener.setName("ssssss");
             listener.start();
         }catch (Exception e){

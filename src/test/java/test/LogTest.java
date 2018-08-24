@@ -13,9 +13,12 @@ public class LogTest {
 
     public static void main(String[] args) {
         for ( int i = 1; i <= 24; i++ ) {
-            InnerLog.info( "write log" );
+            InnerLog.info( "write info log" );
+            InnerLog.debug( "write debug log" );
+            InnerLog.error( "write error log" );
+            InnerLog.warn( "write warn log" );
             try {
-                Thread.sleep( 10000L );
+                Thread.sleep( 1000L );
             } catch ( final InterruptedException e ) {
                 InnerLog.error( "an error occurred", e );
             }

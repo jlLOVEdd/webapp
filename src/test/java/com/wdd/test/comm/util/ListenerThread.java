@@ -5,6 +5,7 @@ import com.wdd.test.comm.log.InnerLog;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.springframework.retry.annotation.EnableRetry;
 
 import java.util.Arrays;
 import java.util.Properties;
@@ -12,34 +13,15 @@ import java.util.Properties;
 /**
  * @Author: weidongdong
  * @Description:
- * @Date: Created in 16:28 2018/5/8
+ * @Date: Created in 13:55 2018/8/22
  */
-/*//@Component("KafkaListener")
- class KafkaListener
-        //implements ApplicationListener<ContextRefreshedEvent>
-        {
-
-    public KafkaListener() {
-    }
-
-    //@Override
-    public void onApplicationEvent() {
-//        if (event.getApplicationContext().getParent() == null) {
-           *//* listenerThread listener = new listenerThread();
-            listener.setDaemon(true);
-            listener.setName("ssssss");
-            listener.start();
-//        }*//*
-
-    }*/
-
-
-   /* @EnableRetry*/
+@EnableRetry
 public class ListenerThread extends Thread {
+    public ListenerThread() {
+    }
 
     @Override
     public void run() {
-        //DepositLog.info(">>>>>>>>>>Kafka  listener  starting ........");
         InnerLog.info(">>>>>>>>>>Kafka  listener  starting ........");
         System.out.println(">>>>>>>>>>Kafka  listener  starting ........");
 
@@ -93,6 +75,3 @@ public class ListenerThread extends Thread {
         }
     }
 }
-/*}*/
-
-

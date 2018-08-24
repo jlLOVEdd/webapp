@@ -71,12 +71,6 @@
         <jetty.version>7.6.10.v20130312</jetty.version>
         <aspectj.version>1.6.12</aspectj.version>
         <quartz-scheduler-version>1.8.6</quartz-scheduler-version>
-        <!-- postgresql
-            mvn install:install-file -Dfile=d://ojdbc5.jar -DgroupId=com.oracle -DartifactId=ojdbc5 -Dversion=11.2.0.4 -Dpackaging=jar
-            <jdbc.driver.groupId>com.oracle</jdbc.driver.groupId>
-            <jdbc.driver.artifactId>ojdbc5</jdbc.driver.artifactId>
-            <jdbc.driver.version>11.2.0.4</jdbc.driver.version>
-        -->
 
         <project.build.sourceEncoding>
             UTF-8
@@ -217,12 +211,6 @@
             <version>1.2</version>
         </dependency>
         <!-- 日志文件管理包 -->
-        <!-- log start -->
-       <!-- <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>-->
 
 
         <!-- 格式化对象，方便输出日志 -->
@@ -239,11 +227,11 @@
             <version>${slf4j.version}</version>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
+            <artifactId>jcl-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>org.lazyluke</groupId>
@@ -408,6 +396,13 @@
             <version>2.0.0-beta-1</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.logback-extensions</groupId>
+            <artifactId>logback-ext-spring</artifactId>
+            <version>0.1.1</version>
+        </dependency>
     </dependencies>
+    <!--spring 整合-->
+
 
 </project>
