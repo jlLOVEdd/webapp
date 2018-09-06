@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wdd.test.comm.log.InnerLog;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -30,14 +31,14 @@ public class LoginController extends BaseController{
 
 	@RequestMapping(value = "/login",method=RequestMethod.GET)
 	public void login( HttpServletRequest request, HttpServletResponse response) throws IOException {
-			 System.out.println("GET"+"/login");
+			 InnerLog.info("GET"+"/login");
 			 response.sendRedirect(request.getContextPath()+"/");
 		}
 	@ResponseBody
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public void dologin(@RequestParam("username") String username, @RequestParam("password") String password
 			, HttpServletRequest request, Model model, HttpServletResponse response) throws Exception {
-		System.out.println("/login");
+		InnerLog.info("/login");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();

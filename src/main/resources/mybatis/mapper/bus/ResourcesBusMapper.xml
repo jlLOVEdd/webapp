@@ -19,20 +19,18 @@
         <collection property="childrenList" ofType="Menu" column="id" select="selectMenuListByPid"/>
     </resultMap>
 
-    <sql id="Base_Column_List"   >
+    <sql id="Base_Column_List">
         id, code, name, url, function, description, classname, icon, type, sort, pid, level,
         leaf, site
     </sql>
 
     <select id="selectMenuList" resultMap="VoBaseResultMap">
-        SELECT
-        <include refid="Base_Column_List"/>
-       from f_resources where pid='' or pid is null order by id asc
+        SELECT * from f_resources where pid is not null order by id asc
     </select>
 
     <select id="selectMenuListByPid" resultMap="VoBaseResultMap">
         SELECT
-        <include refid="Base_Column_List"/>
+       *
         from f_resources where pid=#{id} order by id asc
     </select>
 

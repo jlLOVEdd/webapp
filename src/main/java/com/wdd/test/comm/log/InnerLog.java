@@ -2,12 +2,14 @@ package com.wdd.test.comm.log;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author: weidongdong
  * @Description: 接口调用日志 -----logback
  * @Date: Created in 11:08 2018/6/22
  */
+@Component
 public class InnerLog {
     private final static Logger log = LoggerFactory.getLogger("InnerInfo");
 

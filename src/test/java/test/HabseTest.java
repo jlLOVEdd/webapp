@@ -1,3 +1,4 @@
+/*
 package test;
 
 import org.apache.hadoop.conf.Configuration;
@@ -8,11 +9,13 @@ import org.apache.hadoop.hbase.util.Bytes;
 import java.io.File;
 import java.io.IOException;
 
+*/
 /**
  * @Author: weidongdong
  * @Description:
  * @Date: Created in 15:12 2018/8/9
- */
+ *//*
+
 public class HabseTest {
     public static Connection connection;
     private static Configuration configuration;
@@ -104,10 +107,12 @@ public class HabseTest {
         table.put(put);
 
         // 批量插入
-        /*
+        */
+/*
          * List<Put> putList = new ArrayList<Put>(); puts.add(put);
          * table.put(putList);
-         */
+         *//*
+
         table.close();
         close();
     }
@@ -123,10 +128,12 @@ public class HabseTest {
         // delete.addColumn(Bytes.toBytes(colFamily),Bytes.toBytes(col));
         table.delete(delete);
         // 批量删除
-        /*
+        */
+/*
          * List<Delete> deleteList = new ArrayList<Delete>();
          * deleteList.add(delete); table.delete(deleteList);
-         */
+         *//*
+
         table.close();
         close();
     }
@@ -181,3 +188,4 @@ public class HabseTest {
 
 
 }
+*/

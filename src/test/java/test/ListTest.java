@@ -1,6 +1,7 @@
 package test;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author: weidongdong
@@ -9,7 +10,7 @@ import java.util.*;
  */
 public class ListTest {
     public static void main(String[] args) {
-        System.out.println("-----------LinkedList------------");
+    /*    System.out.println("-----------LinkedList------------");
         List list = new LinkedList();
         list.add("d");
         list.add("e");
@@ -18,7 +19,7 @@ public class ListTest {
         list.add("a");
         list.add(null);
         System.out.println(list.size());
-        list.forEach(n->{
+        list.forEach(n -> {
             System.out.println(n);
         });
         System.out.println("-----------hashSet------------");
@@ -29,11 +30,11 @@ public class ListTest {
         set.add("d");
         set.add("e");
         set.add(null);
-        set.forEach(n->{
+        set.forEach(n -> {
             System.out.println(n);
         });
         System.out.println("-----------ArrayList------------");
-        List<String> strings = Arrays.asList("6", "1", "3", "1","2");
+        List<String> strings = Arrays.asList("6", "1", "3", "1", "2");
 
         //Collections.sort(strings);//sort方法在这里
 
@@ -51,26 +52,31 @@ public class ListTest {
         treeSet.add("a");
         treeSet.add("e");
         treeSet.add("d");
-        for (String s:treeSet){
+        for (String s : treeSet) {
             System.out.println(s);
         }
 
         System.out.println("------------treeMap-----------------");
-        TreeMap<String,Object> treeMap = new TreeMap<String, Object>(new Comparator<Object>() {
+        TreeMap<String, Object> treeMap = new TreeMap<String, Object>(new Comparator<Object>() {
             @Override
             public int compare(Object o1, Object o2) {
-                return  ((String)o1).compareTo(o2.toString());
+                return ((String) o1).compareTo(o2.toString());
             }
         });
-        treeMap.put("a","1");
-        treeMap.put("1","1");
-        treeMap.put("11","1");
-        treeMap.put("2","1");
-        treeMap.put("c","1");
-        treeMap.put("e","1");
-        treeMap.put("d","1");
-        for(Map.Entry entry:treeMap.entrySet()){
-            System.out.println(entry.getKey()+"----------"+entry.getValue());
-        }
+        treeMap.put("a", "1");
+        treeMap.put("1", "1");
+        treeMap.put("11", "1");
+        treeMap.put("2", "1");
+        treeMap.put("c", "1");
+        treeMap.put("e", "1");
+        treeMap.put("d", "1");
+        for (Map.Entry entry : treeMap.entrySet()) {
+            System.out.println(entry.getKey() + "----------" + entry.getValue());
+        }*/
+        System.out.println("---------------------HashMap-----------------------");
+        Map<String, Object> map = new HashMap<>();
+        map.put("ss", "ss");
+        map.put("ss", "ssss");
+        System.out.println(map.get("ss"));
     }
 }
