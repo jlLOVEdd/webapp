@@ -8,7 +8,7 @@ package com.wdd.test.comm.util;
 public class KafkaTest {
     public static void main(String[] args) {
         try {
-            KafkaProducerUtils.getInstance().sendMsg("hello word11");
+            KafkaProducerUtils.getInstance().sendMsg("ssss1");
         }catch (Exception e){
             e.printStackTrace();
         }

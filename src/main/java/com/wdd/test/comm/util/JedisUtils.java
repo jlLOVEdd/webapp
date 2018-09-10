@@ -1,12 +1,12 @@
 package com.wdd.test.comm.util;
 
 import com.wdd.test.comm.log.SysLog;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -21,10 +21,11 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class JedisUtils {
 
-   @Resource
-    private RedisTemplate redisTemplate;
 
-    private JedisUtils() {
+    @Autowired
+    private  RedisTemplate redisTemplate;
+
+    public JedisUtils() {
     }
 
     public static final JedisUtils getInstance() {
@@ -69,10 +70,11 @@ public class JedisUtils {
 
     /**
      * 根据MAP设置 缓存到redis，
+     *
      * @param map
      * @return
      */
-    public boolean cacheValue(Map<String,Object> map) {
+    public boolean cacheValue(Map<String, Object> map) {
         try {
             ValueOperations<String, Object> valueOps = redisTemplate.opsForValue();
             valueOps.multiSet(map);
@@ -131,6 +133,7 @@ public class JedisUtils {
         }
         return false;
     }
+
     /**
      * 根据keys 删除 value
      *
@@ -224,7 +227,7 @@ public class JedisUtils {
     public boolean cacheZSetValue(String key, Set<ZSetOperations.TypedTuple<Object>> tuples) {
         try {
             ZSetOperations<String, Object> valueOps = redisTemplate.opsForZSet();
-            valueOps.add(key,tuples);
+            valueOps.add(key, tuples);
             SysLog.debug("缓存[{}]成功, value[{}]", key, JsonUtils.toJSONString(tuples));
             return true;
         } catch (Throwable t) {
@@ -259,6 +262,7 @@ public class JedisUtils {
 
     /**
      * 根据 pattern 获取keys
+     *
      * @param pattern
      * @return
      */
@@ -266,13 +270,14 @@ public class JedisUtils {
         try {
             return Optional.of(redisTemplate.keys(pattern));
         } catch (Throwable t) {
-            SysLog.error("根据 pattern:{} 获取keys 失败",pattern,t);
+            SysLog.error("根据 pattern:{} 获取keys 失败", pattern, t);
         }
         return Optional.empty();
     }
 
     /**
      * 根据keys获取values
+     *
      * @param keys
      * @return
      */
@@ -281,8 +286,8 @@ public class JedisUtils {
             ValueOperations<String, Object> valueOps = redisTemplate.opsForValue();
             return Optional.of(valueOps.multiGet(keys));
         } catch (Throwable t) {
-            SysLog.error("根据keys:{}获取value失败", keys,t);
+            SysLog.error("根据keys:{}获取value失败", keys, t);
         }
-        return  Optional.empty();
+        return Optional.empty();
     }
 }
