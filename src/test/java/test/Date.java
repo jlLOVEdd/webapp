@@ -1,16 +1,32 @@
 package test;
 
-public enum Date {
-	/**
-	 * 条形码
-	 */
-tiaoxingm,
-/**
- * 查询
- */
-query,
-/**
- * 付款
- */
-pay;
+
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
+public class Date {
+    public static void main(String[] args) {
+        Instant instant = Instant.now();
+        instant.plus(1, ChronoUnit.DAYS);
+        System.out.println(instant);
+        LocalDate birthDate = LocalDate.of(1992, 05, 04);
+        LocalDate current = LocalDate.now();
+        System.out.println(current.minus(1,ChronoUnit.DAYS));
+        MonthDay monthDay = MonthDay.from(birthDate);
+        MonthDay currentDay = MonthDay.from(current);
+        if (monthDay.equals(currentDay)) {
+            System.out.println("this is you birthday");
+        }
+        LocalTime localTime = LocalTime.now();
+        System.out.println(localTime);
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime);
+
+        String testDate = "20180705";
+        LocalDateTime test = LocalDateTime.parse(testDate, DateTimeFormatter.ISO_LOCAL_TIME);
+        System.out.println(test);
+    }
+
+
 }
