@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.wdd.test.bean.Menu;
 import com.wdd.test.bean.dataType.Groal;
+import com.wdd.test.comm.util.JedisUtils;
 import com.wdd.test.service.ResourceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,7 @@ public class ResourceConcroller {
     private Groal selectAllMenu() {
         List<Menu> lsit =null;
         Groal groal = new Groal();
+        System.out.println(JedisUtils.getInstance().getValue("name").get());
         String json =null;
         try {
             lsit = resourceService.selectAllMenu();

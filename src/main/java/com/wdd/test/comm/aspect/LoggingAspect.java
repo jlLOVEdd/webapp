@@ -1,6 +1,7 @@
 package com.wdd.test.comm.aspect;
 
 import com.wdd.test.comm.log.InnerLog;
+import com.wdd.test.comm.util.JedisUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -17,8 +18,8 @@ import java.lang.reflect.Method;
  * @Description:
  * @Date: Created in 9:41 2018/9/4
  */
-@Component
-@Aspect
+/*@Component
+@Aspect*/
 public class LoggingAspect {
 
     @Autowired
@@ -38,6 +39,7 @@ public class LoggingAspect {
 
     @After("pointCut()")
     public void after() {
+
         System.out.println("logging after starting..............");
 
     }
