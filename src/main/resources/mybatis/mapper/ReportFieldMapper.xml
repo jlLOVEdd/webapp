@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wdd.test.dao.ReportFieldMapper" >
+  <resultMap id="BaseResultMap" type="com.wdd.test.bean.ReportField" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="field_code" property="fieldCode" jdbcType="VARCHAR" />
+    <result column="field_name" property="fieldName" jdbcType="VARCHAR" />
+    <result column="width" property="width" jdbcType="INTEGER" />
+    <result column="cellnum" property="cellnum" jdbcType="INTEGER" />
+    <result column="format" property="format" jdbcType="CHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="reporttype" property="reporttype" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="display" property="display" jdbcType="CHAR" />
+    <result column="edittype" property="edittype" jdbcType="CHAR" />
+    <result column="dict_type" property="dictType" jdbcType="VARCHAR" />
+    <result column="format_pattern" property="formatPattern" jdbcType="VARCHAR" />
+    <result column="table_name" property="tableName" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="INTEGER" />
+    <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="INTEGER" />
+    <result column="update_datetime" property="updateDatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, field_code, field_name, width, cellnum, format, sort, reporttype, status, display, 
+    edittype, dict_type, format_pattern, table_name, create_by, create_datetime, update_by, 
+    update_datetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wdd.test.bean.ReportFieldExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from f_reportfield
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from f_reportfield
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from f_reportfield
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wdd.test.bean.ReportFieldExample" >
+    delete from f_reportfield
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wdd.test.bean.ReportField" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into f_reportfield (field_code, field_name, width, 
+      cellnum, format, sort, 
+      reporttype, status, display, 
+      edittype, dict_type, format_pattern, 
+      table_name, create_by, create_datetime, 
+      update_by, update_datetime)
+    values (#{fieldCode,jdbcType=VARCHAR}, #{fieldName,jdbcType=VARCHAR}, #{width,jdbcType=INTEGER}, 
+      #{cellnum,jdbcType=INTEGER}, #{format,jdbcType=CHAR}, #{sort,jdbcType=INTEGER}, 
+      #{reporttype,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{display,jdbcType=CHAR}, 
+      #{edittype,jdbcType=CHAR}, #{dictType,jdbcType=VARCHAR}, #{formatPattern,jdbcType=VARCHAR}, 
+      #{tableName,jdbcType=VARCHAR}, #{createBy,jdbcType=INTEGER}, #{createDatetime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=INTEGER}, #{updateDatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wdd.test.bean.ReportField" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into f_reportfield
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fieldCode != null" >
+        field_code,
+      </if>
+      <if test="fieldName != null" >
+        field_name,
+      </if>
+      <if test="width != null" >
+        width,
+      </if>
+      <if test="cellnum != null" >
+        cellnum,
+      </if>
+      <if test="format != null" >
+        format,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="reporttype != null" >
+        reporttype,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="display != null" >
+        display,
+      </if>
+      <if test="edittype != null" >
+        edittype,
+      </if>
+      <if test="dictType != null" >
+        dict_type,
+      </if>
+      <if test="formatPattern != null" >
+        format_pattern,
+      </if>
+      <if test="tableName != null" >
+        table_name,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fieldCode != null" >
+        #{fieldCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null" >
+        #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null" >
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="cellnum != null" >
+        #{cellnum,jdbcType=INTEGER},
+      </if>
+      <if test="format != null" >
+        #{format,jdbcType=CHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="reporttype != null" >
+        #{reporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="display != null" >
+        #{display,jdbcType=CHAR},
+      </if>
+      <if test="edittype != null" >
+        #{edittype,jdbcType=CHAR},
+      </if>
+      <if test="dictType != null" >
+        #{dictType,jdbcType=VARCHAR},
+      </if>
+      <if test="formatPattern != null" >
+        #{formatPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null" >
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDatetime != null" >
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="updateDatetime != null" >
+        #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wdd.test.bean.ReportFieldExample" resultType="java.lang.Integer" >
+    select count(*) from f_reportfield
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update f_reportfield
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.fieldCode != null" >
+        field_code = #{record.fieldCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fieldName != null" >
+        field_name = #{record.fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.width != null" >
+        width = #{record.width,jdbcType=INTEGER},
+      </if>
+      <if test="record.cellnum != null" >
+        cellnum = #{record.cellnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.format != null" >
+        format = #{record.format,jdbcType=CHAR},
+      </if>
+      <if test="record.sort != null" >
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.reporttype != null" >
+        reporttype = #{record.reporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=CHAR},
+      </if>
+      <if test="record.display != null" >
+        display = #{record.display,jdbcType=CHAR},
+      </if>
+      <if test="record.edittype != null" >
+        edittype = #{record.edittype,jdbcType=CHAR},
+      </if>
+      <if test="record.dictType != null" >
+        dict_type = #{record.dictType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.formatPattern != null" >
+        format_pattern = #{record.formatPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableName != null" >
+        table_name = #{record.tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createBy != null" >
+        create_by = #{record.createBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.createDatetime != null" >
+        create_datetime = #{record.createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateBy != null" >
+        update_by = #{record.updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateDatetime != null" >
+        update_datetime = #{record.updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update f_reportfield
+    set id = #{record.id,jdbcType=INTEGER},
+      field_code = #{record.fieldCode,jdbcType=VARCHAR},
+      field_name = #{record.fieldName,jdbcType=VARCHAR},
+      width = #{record.width,jdbcType=INTEGER},
+      cellnum = #{record.cellnum,jdbcType=INTEGER},
+      format = #{record.format,jdbcType=CHAR},
+      sort = #{record.sort,jdbcType=INTEGER},
+      reporttype = #{record.reporttype,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=CHAR},
+      display = #{record.display,jdbcType=CHAR},
+      edittype = #{record.edittype,jdbcType=CHAR},
+      dict_type = #{record.dictType,jdbcType=VARCHAR},
+      format_pattern = #{record.formatPattern,jdbcType=VARCHAR},
+      table_name = #{record.tableName,jdbcType=VARCHAR},
+      create_by = #{record.createBy,jdbcType=INTEGER},
+      create_datetime = #{record.createDatetime,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=INTEGER},
+      update_datetime = #{record.updateDatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wdd.test.bean.ReportField" >
+    update f_reportfield
+    <set >
+      <if test="fieldCode != null" >
+        field_code = #{fieldCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null" >
+        field_name = #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null" >
+        width = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="cellnum != null" >
+        cellnum = #{cellnum,jdbcType=INTEGER},
+      </if>
+      <if test="format != null" >
+        format = #{format,jdbcType=CHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="reporttype != null" >
+        reporttype = #{reporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="display != null" >
+        display = #{display,jdbcType=CHAR},
+      </if>
+      <if test="edittype != null" >
+        edittype = #{edittype,jdbcType=CHAR},
+      </if>
+      <if test="dictType != null" >
+        dict_type = #{dictType,jdbcType=VARCHAR},
+      </if>
+      <if test="formatPattern != null" >
+        format_pattern = #{formatPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null" >
+        table_name = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime = #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wdd.test.bean.ReportField" >
+    update f_reportfield
+    set field_code = #{fieldCode,jdbcType=VARCHAR},
+      field_name = #{fieldName,jdbcType=VARCHAR},
+      width = #{width,jdbcType=INTEGER},
+      cellnum = #{cellnum,jdbcType=INTEGER},
+      format = #{format,jdbcType=CHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      reporttype = #{reporttype,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      display = #{display,jdbcType=CHAR},
+      edittype = #{edittype,jdbcType=CHAR},
+      dict_type = #{dictType,jdbcType=VARCHAR},
+      format_pattern = #{formatPattern,jdbcType=VARCHAR},
+      table_name = #{tableName,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=INTEGER},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=INTEGER},
+      update_datetime = #{updateDatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

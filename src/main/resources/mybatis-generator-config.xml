@@ -79,9 +79,16 @@
 
         <table tableName="f_user_role" domainObjectName="UserRole">
             <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" type="post" identity="true"/>
-        </table>-->
+        </table>
         <table tableName="t_goods" domainObjectName="Goods">
             <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" type="post" identity="true"/>
+        </table>-->
+
+        <table tableName="f_reportfield" domainObjectName="ReportField">
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" type="post" identity="true"/>
+        </table>
+        <table tableName="f_report_type" domainObjectName="ReportType">
+        <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" type="post" identity="true"/>
         </table>
 
 

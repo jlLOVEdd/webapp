@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wdd.test.dao.ReportTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.wdd.test.bean.ReportType" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="table_name" property="tableName" jdbcType="VARCHAR" />
+    <result column="sheet_name" property="sheetName" jdbcType="VARCHAR" />
+    <result column="start_row" property="startRow" jdbcType="INTEGER" />
+    <result column="sheet_num" property="sheetNum" jdbcType="INTEGER" />
+    <result column="is_common_report" property="isCommonReport" jdbcType="INTEGER" />
+    <result column="create_by" property="createBy" jdbcType="INTEGER" />
+    <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="INTEGER" />
+    <result column="update_datetime" property="updateDatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, status, table_name, sheet_name, start_row, sheet_num, is_common_report, 
+    create_by, create_datetime, update_by, update_datetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wdd.test.bean.ReportTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from f_report_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from f_report_type
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from f_report_type
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wdd.test.bean.ReportTypeExample" >
+    delete from f_report_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wdd.test.bean.ReportType" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into f_report_type (name, status, table_name, 
+      sheet_name, start_row, sheet_num, 
+      is_common_report, create_by, create_datetime, 
+      update_by, update_datetime)
+    values (#{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{tableName,jdbcType=VARCHAR}, 
+      #{sheetName,jdbcType=VARCHAR}, #{startRow,jdbcType=INTEGER}, #{sheetNum,jdbcType=INTEGER}, 
+      #{isCommonReport,jdbcType=INTEGER}, #{createBy,jdbcType=INTEGER}, #{createDatetime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=INTEGER}, #{updateDatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wdd.test.bean.ReportType" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into f_report_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="tableName != null" >
+        table_name,
+      </if>
+      <if test="sheetName != null" >
+        sheet_name,
+      </if>
+      <if test="startRow != null" >
+        start_row,
+      </if>
+      <if test="sheetNum != null" >
+        sheet_num,
+      </if>
+      <if test="isCommonReport != null" >
+        is_common_report,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="tableName != null" >
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetName != null" >
+        #{sheetName,jdbcType=VARCHAR},
+      </if>
+      <if test="startRow != null" >
+        #{startRow,jdbcType=INTEGER},
+      </if>
+      <if test="sheetNum != null" >
+        #{sheetNum,jdbcType=INTEGER},
+      </if>
+      <if test="isCommonReport != null" >
+        #{isCommonReport,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDatetime != null" >
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="updateDatetime != null" >
+        #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wdd.test.bean.ReportTypeExample" resultType="java.lang.Integer" >
+    select count(*) from f_report_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update f_report_type
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.tableName != null" >
+        table_name = #{record.tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sheetName != null" >
+        sheet_name = #{record.sheetName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startRow != null" >
+        start_row = #{record.startRow,jdbcType=INTEGER},
+      </if>
+      <if test="record.sheetNum != null" >
+        sheet_num = #{record.sheetNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.isCommonReport != null" >
+        is_common_report = #{record.isCommonReport,jdbcType=INTEGER},
+      </if>
+      <if test="record.createBy != null" >
+        create_by = #{record.createBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.createDatetime != null" >
+        create_datetime = #{record.createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateBy != null" >
+        update_by = #{record.updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateDatetime != null" >
+        update_datetime = #{record.updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update f_report_type
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      table_name = #{record.tableName,jdbcType=VARCHAR},
+      sheet_name = #{record.sheetName,jdbcType=VARCHAR},
+      start_row = #{record.startRow,jdbcType=INTEGER},
+      sheet_num = #{record.sheetNum,jdbcType=INTEGER},
+      is_common_report = #{record.isCommonReport,jdbcType=INTEGER},
+      create_by = #{record.createBy,jdbcType=INTEGER},
+      create_datetime = #{record.createDatetime,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=INTEGER},
+      update_datetime = #{record.updateDatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wdd.test.bean.ReportType" >
+    update f_report_type
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="tableName != null" >
+        table_name = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetName != null" >
+        sheet_name = #{sheetName,jdbcType=VARCHAR},
+      </if>
+      <if test="startRow != null" >
+        start_row = #{startRow,jdbcType=INTEGER},
+      </if>
+      <if test="sheetNum != null" >
+        sheet_num = #{sheetNum,jdbcType=INTEGER},
+      </if>
+      <if test="isCommonReport != null" >
+        is_common_report = #{isCommonReport,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime = #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wdd.test.bean.ReportType" >
+    update f_report_type
+    set name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      table_name = #{tableName,jdbcType=VARCHAR},
+      sheet_name = #{sheetName,jdbcType=VARCHAR},
+      start_row = #{startRow,jdbcType=INTEGER},
+      sheet_num = #{sheetNum,jdbcType=INTEGER},
+      is_common_report = #{isCommonReport,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=INTEGER},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=INTEGER},
+      update_datetime = #{updateDatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

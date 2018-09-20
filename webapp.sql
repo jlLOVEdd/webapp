@@ -316,3 +316,42 @@ CREATE TABLE `t_goods` (
 `receivable_amount`  decimal(12,2) NULL COMMENT '应收金额' ,
 PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `f_reportfield` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id，自动增长',
+  `field_code` varchar(50) DEFAULT NULL COMMENT '字段编号,查询sql的字段名称',
+  `field_name` varchar(100) DEFAULT NULL COMMENT '字段名称',
+  `width` int(11) DEFAULT NULL COMMENT 'excel列宽',
+  `cellnum` int(11) DEFAULT NULL COMMENT 'excel列编号',
+  `format` char(3) DEFAULT NULL COMMENT '单元格格式',
+  `sort` int(11) DEFAULT NULL COMMENT '排序字段',
+  `reporttype` varchar(20) DEFAULT NULL COMMENT '1-财务报表；2-回款导入；3-项目信息表；4-修改数据；5-对比数据；6-导出NC报表；7-主签项目到检统计；8-开票导入；9-第三方结算项目汇总；10-第三方结算明细；11-第三方预付结算导出；12-开票回款项目信息；13-开票回款统计信息；14-开票导出；15-回款导出；16-第三方结算减亏信息;18-主签项目到检统计（销管）',
+  `status` char(1) DEFAULT NULL COMMENT '状态：1-使用，0-不使用',
+  `display` char(1) DEFAULT '1',
+  `edittype` char(1) DEFAULT '0' COMMENT '0-不可修改，1-课需改，2-为空时可添加',
+  `dict_type` varchar(20) DEFAULT NULL COMMENT '字典翻译类型，根据字典表code翻译',
+  `format_pattern` varchar(50) DEFAULT NULL COMMENT '格式化模式',
+  `table_name` varchar(50) DEFAULT NULL COMMENT '数据库表名',
+  `create_by` int(11) DEFAULT NULL,
+  `create_datetime` datetime DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `update_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='字段配置信息表';
+
+
+CREATE TABLE `f_report_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `name` varchar(100) DEFAULT NULL COMMENT '报表类型名称',
+  `status` int(11) DEFAULT NULL COMMENT '报表状态：0-无效；1-有效；2-有效可导入',
+  `table_name` varchar(100) DEFAULT NULL COMMENT '关联表名',
+  `sheet_name` varchar(100) DEFAULT NULL COMMENT 'sheet名称',
+  `start_row` int(11) DEFAULT NULL COMMENT '读取开始行数',
+  `sheet_num` int(11) DEFAULT NULL COMMENT 'sheet数量',
+  `is_common_report` int(2) DEFAULT NULL COMMENT '是否可用于通用导入：1.是，2否',
+  `create_by` int(11) DEFAULT NULL,
+  `create_datetime` datetime DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `update_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

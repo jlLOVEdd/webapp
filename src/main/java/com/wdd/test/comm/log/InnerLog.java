@@ -21,6 +21,9 @@ public class InnerLog {
         log.error(message);
     }
 
+    public static void error(String format, Object... arguments) {
+        log.debug(format, arguments);
+    }
     public static void warn(String message) {
         log.warn(message);
     }
