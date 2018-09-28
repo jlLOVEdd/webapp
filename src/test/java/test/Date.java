@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Date {
     public static void main(String[] args) {
-        Instant instant = Instant.now();
+        /*Instant instant = Instant.now();
         instant.plus(1, ChronoUnit.DAYS);
         System.out.println(instant);
         LocalDate birthDate = LocalDate.of(1992, 05, 04);
@@ -21,11 +21,12 @@ public class Date {
         LocalTime localTime = LocalTime.now();
         System.out.println(localTime);
         LocalDateTime localDateTime = LocalDateTime.now();
-        System.out.println(localDateTime);
+        System.out.println(localDateTime);*/
 
-        String testDate = "20180705";
-        LocalDateTime test = LocalDateTime.parse(testDate, DateTimeFormatter.ISO_LOCAL_TIME);
+        String testDate = "2018-07-05";
+        String test = LocalDate.parse(testDate, DateTimeFormatter.ISO_DATE).plusDays(1).toString();
         System.out.println(test);
+
     }
 
 

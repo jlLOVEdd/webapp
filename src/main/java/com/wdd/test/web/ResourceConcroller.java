@@ -31,7 +31,6 @@ public class ResourceConcroller {
     private Groal selectAllMenu() {
         List<Menu> lsit =null;
         Groal groal = new Groal();
-        System.out.println(JedisUtils.getInstance().getValue("name").get());
         String json =null;
         try {
             lsit = resourceService.selectAllMenu();

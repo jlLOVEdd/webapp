@@ -26,7 +26,11 @@
     <bean id="sqlSessionFactory"
           class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-
+        <property name="plugins">
+            <array>
+                <ref bean="pagePlugin"/>
+            </array>
+        </property>
         <property name="configLocation"
                   value="classpath:/mybatis-spring.xml"/>
         <!-- 显式指定Mapper文件位置 -->
@@ -46,11 +50,6 @@
     <bean id="validator"
           class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 
-    <!--
-        <bean id="dataSource"
-            class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-            <constructor-arg ref="dataSourceSpied" />
-        </bean> -->
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
@@ -170,7 +169,15 @@
 
         <!-- 配置监控统计拦截的filters -->
         <property name="filters" value="stat"/>
+
     </bean>
-    <bean class="com.wdd.test.comm.util.SpringContextHolder"></bean>
+    <bean id="pagePlugin" class="com.wdd.test.comm.Interceptor.PageInterceptor">
+        <!--<property name="properties">
+            <props>
+                <prop key="dialect">com.ikang.finance.common.dialect.MySQLDialect</prop>
+                <prop key="pageSqlId">(.*)selectByExample(.*)</prop>
+            </props>
+        </property>-->
+    </bean>
     <import resource="applicationContext-shiro.xml"/>
 </beans>

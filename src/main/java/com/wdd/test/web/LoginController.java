@@ -53,12 +53,15 @@ public class LoginController extends BaseController {
             subject.login(token);
             //SecurityUtils.getSubject().getSession().setTimeout(60000);
         } catch (UnknownAccountException e) {
+            e.printStackTrace();
             jsonObj.put("success", false);
             jsonObj.put("msg", "用户名错误");
         } catch (IncorrectCredentialsException e) {
+            e.printStackTrace();
             jsonObj.put("success", false);
             jsonObj.put("msg", "密码错误");
         } catch (AuthenticationException e) {
+            e.printStackTrace();
             jsonObj.put("success", false);
             jsonObj.put("msg", "输入过多用户锁定");
         } finally {

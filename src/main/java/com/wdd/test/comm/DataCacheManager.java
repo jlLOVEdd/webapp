@@ -30,8 +30,8 @@ public class DataCacheManager implements InitializingBean {
     }
 
     public void initRoles() {
-        Sysuserinfo sysuserinfo = userService.selectByName("weidongdong");
-        logger.info("唯一登陆名" + sysuserinfo.getUsername() + "---" + sysuserinfo.getPassword());
+       /* Sysuserinfo sysuserinfo = userService.selectByName("weidongdong");
+        logger.info("唯一登陆名" + sysuserinfo.getUsername() + "---" + sysuserinfo.getPassword());*/
     }
 
     public void initpasscs() {

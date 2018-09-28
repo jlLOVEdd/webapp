@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * 登陆过滤器
+ * 登陆拦截器
  */
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
