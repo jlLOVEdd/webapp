@@ -18,14 +18,14 @@ import java.util.concurrent.TimeUnit;
  * @Description:
  * @Date: Created in 10:37 2018/3/16
  */
-@Component
+
 public class JedisUtils {
 
 
-    @Autowired
-    private  RedisTemplate redisTemplate;
 
-    public JedisUtils() {
+    private  RedisTemplate redisTemplate = SpringContextHolder.getBean("redisTemplate");
+
+    private JedisUtils() {
     }
 
     public static final JedisUtils getInstance() {

@@ -10,14 +10,15 @@
 <html>
 <head>
     <title>loginPage</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/common/css/layui.css" media="all">
+    <link rel="stylesheet" href="common/css/layui.css" media="all">
+
 </head>
 <body class="layui-bg-cyan">
     <div class="layui-container" style="margin-top:240px">
         <div class="layui-fluid">
             <div class="layui-row">
                 <div class="layui-col-md4 layui-col-md-offset4">
-                    <form class="layui-form " action="/login" method="get">
+                    <form class="layui-form " action="/login" method="post">
                         <div class="layui-form-item">
                             <label class="layui-form-label">用户：</label>
                             <div class="layui-input-block">
@@ -40,7 +41,7 @@
             </div>
         </div>
     </div>
-    <script src="${pageContext.request.contextPath}/common/layui.js"></script>
+    <script src="common/layui.js"></script>
     <script>
         layui.use(['form','layer'],function () {
             var $ = layui.jquery;
@@ -50,9 +51,6 @@
             form.on('submit(go)',function (data) {
                 var datas = data.field;
                 var action = data.form.action;
-                console.log(datas);
-                console.log(action);
-
                 $.ajax({
                     url:action,
                     data:datas,
@@ -62,8 +60,6 @@
                         if(data.success){
                             window.location.href="main";
                         }else{
-                            console.log(data.success);
-                            console.log(data.msg);
                             layer.open({
                                 skin: 'demo-class',
                                 offset: 'auto',

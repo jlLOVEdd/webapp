@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>湖南女子学院</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
+
 <div style="alignment: center;width:500px;height:100px; background:url(logo.jpg);background-repeat:no-repeat;background-position:top left;background-size: auto 100px">
 </div>
 <div style="float: left;color: #FD482C;width:123px;height: 23px;"></div>
@@ -27,4 +29,10 @@
 <div  style="position:relative;left:10%;top:100px;width:60%;height: 400px; background: url(timg.jpg);"></div>
 
 </body>
+<script>
+    $(function() {
+        alert($("th:last").text());
+    });
+
+</script>
 </html>

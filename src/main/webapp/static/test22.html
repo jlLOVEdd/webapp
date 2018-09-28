@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script  type="text/javascript" src="../common/js/jquery-3.1.1.min.js"></script>
+
 </head>
+
 <body>
 
 <table border="1"  cellspacing="0" >
@@ -24,14 +27,23 @@
         <td>是</td>
     </tr>
 </table>
-<!--
+
 <p>点击下面的按钮，循环遍历对象 "person" 的属性。</p>
 <button onclick="myFunction()">点击这里</button>
 <p id="demo"></p>
--->
+
 
 <script>
+
+
+
+    function testJqury() {
+        alert($("th:last").text());
+
+    }
+
     function myFunction() {
+        testJqury();
         var x;
         var txt = "";
         var person = {fname: "Bill", lname: "Gates", age: 56};

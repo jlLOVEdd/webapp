@@ -64,7 +64,9 @@
     </div>
 </div>
 <script src="common/layui.js"></script>
+
 <script>
+
     //JavaScript代码区域
     layui.use(['element', 'laytpl'], function () {
         var element = layui.element,
