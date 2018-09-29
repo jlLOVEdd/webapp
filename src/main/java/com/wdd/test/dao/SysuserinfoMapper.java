@@ -2,6 +2,7 @@ package com.wdd.test.dao;
 
 import com.wdd.test.bean.Sysuserinfo;
 import com.wdd.test.bean.SysuserinfoExample;
+import com.wdd.test.comm.page.Page;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -30,5 +31,5 @@ public interface SysuserinfoMapper  {
     int updateByPrimaryKeySelective(Sysuserinfo record);
 
     int updateByPrimaryKey(Sysuserinfo record);
-    Sysuserinfo selectByName(@Param("name") String name);
+
 }

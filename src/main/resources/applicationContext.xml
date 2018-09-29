@@ -172,12 +172,7 @@
 
     </bean>
     <bean id="pagePlugin" class="com.wdd.test.comm.Interceptor.PageInterceptor">
-        <!--<property name="properties">
-            <props>
-                <prop key="dialect">com.ikang.finance.common.dialect.MySQLDialect</prop>
-                <prop key="pageSqlId">(.*)selectByExample(.*)</prop>
-            </props>
-        </property>-->
+
     </bean>
     <import resource="applicationContext-shiro.xml"/>
 </beans>

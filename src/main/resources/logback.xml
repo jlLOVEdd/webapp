@@ -163,17 +163,15 @@
     <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>
     <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" value="DEBUG"/>
 
-    <logger name="InnerInfo" level="info">
+    <logger name="InnerInfo" level="DEBUG">
         <appender-ref ref="InnerInfo"/>
     </logger>
 
-    <logger name="InnerInfo" level="INFO">
-        <appender-ref ref="system"/>
-    </logger>
+
 
 
     <!-- root级别   DEBUG -->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
