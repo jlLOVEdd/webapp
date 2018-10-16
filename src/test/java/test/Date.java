@@ -17,11 +17,11 @@ public class Date {
         MonthDay currentDay = MonthDay.from(current);
         if (monthDay.equals(currentDay)) {
             System.out.println("this is you birthday");
-        }
-        LocalTime localTime = LocalTime.now();
-        System.out.println(localTime);
-        LocalDateTime localDateTime = LocalDateTime.now();
-        System.out.println(localDateTime);*/
+        }*/
+
+        LocalDateTime localDateTime = LocalDateTime.parse(LocalDateTime.now().toString(),DateTimeFormatter.BASIC_ISO_DATE);
+        System.out.println(localDateTime);
+
 
         String testDate = "2018-07-05";
         String test = LocalDate.parse(testDate, DateTimeFormatter.ISO_DATE).plusDays(1).toString();

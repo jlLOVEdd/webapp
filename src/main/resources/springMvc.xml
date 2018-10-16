@@ -32,8 +32,17 @@
           p:prefix="/WEB-INF/rest/page/" p:suffix=".jsp"/>
 
     <mvc:view-controller path="/"
-                         view-name="redirect:/main"/>
+                         view-name="redirect:main"/>
+    <bean id="loginInterceptor" class="com.wdd.test.comm.Interceptor.LoginInterceptor"/>
+    <bean id="httpInjectInterceptor" class="com.wdd.test.comm.Interceptor.HttpInjectInterceptor"/>
 
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <ref bean="httpInjectInterceptor"/>
+            </list>
+        </property>
+    </bean>
 
     <!-- 支持 Shiro对Controller的方法级AOP安全控制  begin-->
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
