@@ -18,7 +18,7 @@
         <div class="layui-fluid">
             <div class="layui-row">
                 <div class="layui-col-md4 layui-col-md-offset4">
-                    <form class="layui-form " action="/login" method="post">
+                    <form class="layui-form " action="login" method="post">
                         <div class="layui-form-item">
                             <label class="layui-form-label">用户：</label>
                             <div class="layui-input-block">

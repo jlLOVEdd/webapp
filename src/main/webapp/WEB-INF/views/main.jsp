@@ -1,15 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: js170830xlr
-  Date: 2018/1/18
-  Time: 16:24
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/WEB-INF/views/page/include/taglib.jsp" %>
 <html>
 <head>
-
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>个人项目测试</title>
@@ -63,7 +55,6 @@
         © layui.com - 底部固定区域
     </div>
 </div>
-<script src="common/layui.js"></script>
 
 <script>
 

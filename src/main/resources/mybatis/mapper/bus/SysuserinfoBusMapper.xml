@@ -8,9 +8,6 @@
     <select id="selectByName"  resultMap="VoBaseResultMap">
        select  userid, agentID, password, usertype, username, sex, cardID, mobile, nickname, is_nickname,
 
-
-
-
     status, createtime, updatetime, pwd_last_datetime from  test.f_sysuserinfo WHERE username=#{name}
 
     </select>

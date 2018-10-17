@@ -35,8 +35,9 @@
             <value>
                 /main =user
                 /=user
+                /login =anon
                 /common/** =anon
-                /** =anon
+                /** =authc
             </value>
         </property>
     </bean>

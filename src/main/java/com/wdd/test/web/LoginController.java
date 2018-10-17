@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,13 +31,8 @@ public class LoginController extends BaseController {
     @Autowired
     private CacheManager cacheManager;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        InnerLog.info("GET" + "/login");
-        response.sendRedirect(request.getContextPath() + "/");
-    }
 
-    @ResponseBody
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void dologin(@RequestParam("username") String username, @RequestParam("password") String password
             , HttpServletRequest request, Model model, HttpServletResponse response) throws Exception {
@@ -74,8 +70,9 @@ public class LoginController extends BaseController {
     }
 
     @RequestMapping(value = "/main")
-    public String main() {
-        return "main";
+    public ModelAndView main() {
+        ModelAndView modelAndView = new ModelAndView("main");
+        return modelAndView;
     }
 
 }
