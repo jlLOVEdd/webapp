@@ -13,3 +13,10 @@
 <script type="text/javascript" src="<%=path%>/common/js/jquery/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="<%=path%>/common/layui.all.js"></script>
 
+<script type="text/javascript" src="<%=path%>/common/js/jquery/form/jquery.form.js"></script>
+
+<script type="text/javascript" src="<%=path%>/common/js/jquery/validation/dist/jquery.validate.min.js"></script>
+<script type="text/javascript" src="<%=path%>/common/js/jquery/validation/dist/jquery.validate.js"></script>
+
+<script type="text/javascript" src="<%=path%>/common/js/DatePicker/WdatePicker.js"></script>
+

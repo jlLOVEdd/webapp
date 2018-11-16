@@ -1,5 +1,8 @@
 package com.wdd.test.aop;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Buness implements AspjectInter {
 
 
