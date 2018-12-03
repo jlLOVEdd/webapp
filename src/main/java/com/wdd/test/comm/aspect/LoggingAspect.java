@@ -1,14 +1,14 @@
 package com.wdd.test.comm.aspect;
 
+import com.wdd.test.comm.annotation.LogAnnotation;
+import com.wdd.test.comm.log.ErrorLog;
 import com.wdd.test.comm.log.InnerLog;
-import com.wdd.test.comm.util.JedisUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -34,13 +34,21 @@ public class LoggingAspect {
     public void before(JoinPoint joinPoint) {
         //System.out.println(this.request.getMethod());
         System.out.println("GET METHOD START。。。。。。。。。");
-        InnerLog.info(joinPoint.getSignature().getDeclaringType()+"---"+joinPoint.getSignature().getName());
+        InnerLog.info(joinPoint.getSignature().getDeclaringType() + "---" + joinPoint.getSignature().getName());
     }
 
-    @After("pointCut()")
-    public void after() {
+    @After(value = "pointCut()")
+    public void after(JoinPoint joinpoint) {
+        try {
+            MethodSignature ms = (MethodSignature) joinpoint.getSignature();
+            Method method = ms.getMethod();
+            //String methodName = method.getName();
+            if (method.isAnnotationPresent(LogAnnotation.class)) {
+                LogAnnotation audits = method.getAnnotation(LogAnnotation.class);
 
-        System.out.println("logging after starting..............");
-
+            }
+        } catch (Exception e) {
+            ErrorLog.error("审计日志记录异常:");
+        }
     }
 }

@@ -16,4 +16,8 @@ public class ConfigContains {
     public static final String FIELD_TYPE_DIC_NAME = "8";// 字典类型:根据name -> code
     public static final String FIELD_TYPE_DOUBLE = "9";// double类型
     public static final String FIELD_TYPE_NOT_CHINESE = "10";// 非中文
+
+    public static final String FILE_DATETIME_PATTERN = "yyyyMMddHHmmssSSS";
+
+
 }

@@ -1,7 +1,8 @@
 package test;
 
-import com.wdd.test.comm.log.InnerLog;
-import org.slf4j.Logger;
+
+
+import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -11,18 +12,15 @@ import org.slf4j.LoggerFactory;
  */
 public class LogTest {
 
-    public static void main(String[] args) {
-        for ( int i = 1; i <= 24; i++ ) {
-            InnerLog.info( "write info log" );
-            InnerLog.debug( "write debug log" );
-            InnerLog.error( "write error log" );
-            InnerLog.warn( "write warn log" );
-            try {
-                Thread.sleep( 1000L );
-            } catch ( final InterruptedException e ) {
-                InnerLog.error( "an error occurred", e );
-            }
-        }
+   public static  Logger logger = ((Logger) LoggerFactory.getLogger(LogTest.class));
 
+    public static void main(String[] args) {
+
+       /* InnerLog.info("write info log");
+        InnerLog.debug("write debug log");
+        InnerLog.error("write error log");
+        InnerLog.warn("write warn log");
+*/
+        logger.info("sssss=======ssss");
     }
 }

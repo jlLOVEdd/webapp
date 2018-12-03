@@ -9,7 +9,7 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- 对日志进行格式化 -->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger -%msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %p %c:%L-> %m%n</pattern>
         </encoder>
     </appender>
 
@@ -135,7 +135,7 @@
     <!-- 接口调用监控日志 appender -->
     <appender name="InnerInfo" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level  %logger - %msg%n</pattern>
         </encoder>
         <file>${log_dir}/webapp/webapp.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -164,8 +164,8 @@
     <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" value="DEBUG"/>
 
     <logger name="InnerInfo" level="DEBUG">
-        <appender-ref ref="InnerInfo"/>
-    </logger>
+    <appender-ref ref="InnerInfo"/>
+</logger>
 
 
 
