@@ -20,7 +20,7 @@
                 <div class="layui-col-md4 layui-col-md-offset4">
                     <form class="layui-form " action="login" method="post">
                         <div class="layui-form-item">
-                            <label class="layui-form-label">用户：</label>
+                            <label class="layui-form-label">用户11：</label>
                             <div class="layui-input-block">
                                 <input class="layui-input"  type="text" name="username" lay-verify="required" autocomplete="off" placeholder="请输入用户名" >
                             </div>
